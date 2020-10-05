@@ -4,7 +4,9 @@ import GoogleMapReact from 'google-map-react';
 import home from './icons/home.svg'
 import active from './icons/active.svg'
 import ReactHtmlParser from 'react-html-parser'
-
+import {
+  Link,
+} from "react-router-dom";
 class Marker extends React.Component {
   constructor(props) {
     super(props);
@@ -52,7 +54,8 @@ class Marker extends React.Component {
             left: '-105px',
             height: 'auto',
             display: 'block',
-            zIndex: '1000000000'
+            zIndex: '1000000000',
+            textAlign: 'center'
           }}>
               <br></br>
               <b>{this.props.title}</b> <br></br>
@@ -60,7 +63,7 @@ class Marker extends React.Component {
                 {ReactHtmlParser(this.props.vicinity)}
               </p>
               <p>
-                <a href="">View Bookings</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="javascript:void()" onClick={this.book}>Book</a>
+                <Link to={"/bookings?hotelId="+this.props.hotelId}>View Bookings</Link>&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:void()" onClick={this.book}>Book</a>
               </p>
           </div>
         }
